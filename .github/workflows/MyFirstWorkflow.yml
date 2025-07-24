@@ -15,6 +15,6 @@ jobs:
     name: Matrix Strategy Job
     runs-on: ${{matrix.os_version}}
     steps:
-      -  uses: action/setup-node@3.6.0
+      -  uses: actions/setup-node@3.6.0
          with:
             node-version: ${{matrix.node_version}}

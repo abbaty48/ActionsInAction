@@ -5,16 +5,8 @@ on:
       - 'master'
   workflow_dispatch:
 jobs:
-  job_1:
-    strategy:
-      fail-fast: false
-      max-parallel: 3
-      matrix:
-        os_version: [windows-latest, ubuntu-latest]
-        node_version: [12,14,16]
-    name: Matrix Strategy Job
-    runs-on: ${{matrix.os_version}}
+  deploy:
+    if: ${{github.ref == 'refs/heads/master'}}
+    runs-on: ubuntu-latest
     steps:
-      -  uses: actions/setup-node@3.6.0
-         with:
-            node-version: ${{matrix.node_version}}
+    -  run:  echo "Deploying branch ${{ github.ref }}"

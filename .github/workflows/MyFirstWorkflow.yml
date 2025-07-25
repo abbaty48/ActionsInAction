@@ -5,8 +5,9 @@ on:
       - 'master'
   workflow_dispatch:
 jobs:
-  deploy:
-    if: ${{contains(github.ref, 'refs/heads/master')}}
+  debugging:
     runs-on: ubuntu-latest
     steps:
-    -  run:  echo "Depolying on branch ${{github.ref}}"
+    -  run: |
+        echo "::warning file=app.js, line=10, endline=22::Missing a semicolon"
+        echo "::error file=app.js, line=23, endline=32, title=On Handle Error::Error in app.js"

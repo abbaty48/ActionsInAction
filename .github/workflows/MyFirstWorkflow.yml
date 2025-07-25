@@ -8,6 +8,10 @@ jobs:
   debugging:
     runs-on: ubuntu-latest
     steps:
-    -  run: |
-        echo "::warning file=app.js,line=10,endLine=22::Missing a semicolon"
-        echo "::error file=app.js,line=23,endLine=32,title=On Handle Error::Error in app.js"
+    -  name: Set Color
+       id: color-generator
+       run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+
+    -  name: Get Color
+       run: echo "${{steps.color-generator.outpus.SELECTED_COLOR}}"
+        

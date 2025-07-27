@@ -1,17 +1,20 @@
-name: Testing matrix strategy
-on:
-  push:
-    branches:
-      - 'master'
-  workflow_dispatch:
+name: Testing
+on: 
+    push:
+        branches:
+            - master
+    workflow_dispatch:
 jobs:
-  debugging:
-    runs-on: ubuntu-latest
-    steps:
-    -  name: Set Color
-       id: color-generator
-       run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-
-    -  name: Get Color
-       run: echo "${{steps.color-generator.outpus.SELECTED_COLOR}}"
-        
+    test_1:
+        runs-on: ubuntu-latest
+        steps:
+        -   name: "first testing"
+            run: |
+                echo "***1***"
+                echo "FIRST JOB TESTING"
+    test_2:
+        runs-on: ubuntu-latest
+        steps:
+        -   name: "second testing"
+            run: echo "SECOND JOB TESTING"
+    
